@@ -127,7 +127,7 @@
   </rooms>
   <constants number="2">
     <constant name="NaN">-99999999</constant>
-    <constant name="graphic_loom_enabled">false</constant>
+    <constant name="graphic_loom_enabled">true</constant>
   </constants>
   <help>
     <rtf>help.rtf</rtf>

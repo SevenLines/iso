@@ -88,13 +88,13 @@ with(new_object) {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>with(new_object) {
+            <string>/*with(new_object) {
     var obj = instance_copy(true);
     with (obj) {
 //        depth = global.build_cursor_depth;
         level = global.build_cursor_level;
     }
-}
+}*/
 </string>
           </argument>
         </arguments>

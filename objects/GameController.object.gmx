@@ -194,9 +194,9 @@ if (graphic_loom_enabled) {
         with(obj_Water) {
             draw_sprite_on_surface(global.zoom_k, c_white, 0);
         }
-        with(obj_Crystal_base) {
+        /*with(obj_Crystal_base) {
             draw_sprite_on_surface(global.zoom_k, c_white, 0);
-        }
+        }*/
     surface_reset_target();
       
     shader_set(shd_Threshold) 
@@ -213,14 +213,14 @@ if (graphic_loom_enabled) {
     shader_reset();
     
     shader_set(shd_Blur)
-        shader_set_uniform_f(u_scale, 0, 0.005);
+        shader_set_uniform_f(u_scale, 0, 0.01);
         surface_set_target(surf_blur_pass);
             draw_surface(surf_bloom, 0, 0);
         surface_reset_target();
     shader_reset();
     
     shader_set(shd_Blur)
-        shader_set_uniform_f(u_scale, 0.005, 0);
+        shader_set_uniform_f(u_scale, 0.01, 0);
         surface_set_target(surf_bloom);
             draw_surface(surf_blur_pass, 0, 0);
         surface_reset_target();
