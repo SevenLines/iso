@@ -20,6 +20,7 @@
       <sprite>sprites\test_land</sprite>
     </sprites>
     <sprites name="buildings">
+      <sprite>sprites\spr_Tower_2</sprite>
       <sprite>sprites\sprite11_fort</sprite>
       <sprites name="crystals">
         <sprite>sprites\spr_Crystal_1</sprite>
@@ -28,7 +29,15 @@
     <sprite>sprites\spr_base</sprite>
     <sprite>sprites\spr_Displace</sprite>
     <sprites name="GUI">
-      <sprite>sprites\gui_button</sprite>
+      <sprite>sprites\spr_Slider</sprite>
+      <sprites name="BuildItems">
+        <sprite>sprites\spr_gui_build_items_base</sprite>
+        <sprite>sprites\spr_gui_build_item_crytstal</sprite>
+        <sprite>sprites\spr_gui_build_item_tower1</sprite>
+      </sprites>
+    </sprites>
+    <sprites name="decorations">
+      <sprite>sprites\dec_Grass_1</sprite>
     </sprites>
   </sprites>
   <backgrounds name="background"/>
@@ -51,7 +60,9 @@
     <scripts name="Helpers">
       <script>scripts\get_iso_position.gml</script>
       <script>scripts\draw_sprite_on_surface.gml</script>
-      <script>scripts\update_gui_position.gml</script>
+      <script>scripts\get_gui_mouse_relative_position.gml</script>
+      <script>scripts\gui_update_positions.gml</script>
+      <script>scripts\gui_draw_element_box.gml</script>
     </scripts>
     <scripts name="GameController">
       <script>scripts\game_controller_create_surfaces.gml</script>
@@ -91,6 +102,9 @@
       <shader type="GLSLES">shaders\shd_bright_contrast.shader</shader>
     </shaders>
   </shaders>
+  <fonts name="fonts">
+    <font>fonts\fnt_ComicSans20</font>
+  </fonts>
   <objects name="objects">
     <objects name="Controllers">
       <object>objects\GroundController</object>
@@ -103,6 +117,7 @@
       <object>objects\obj_Block</object>
       <object>objects\obj_BuildCursor</object>
       <object>objects\obj_GUI_base</object>
+      <object>objects\obj_gui_build_item</object>
     </objects>
     <objects name="Buildings">
       <object>objects\obj_Fort</object>
@@ -110,6 +125,9 @@
       <objects name="Crystals">
         <object>objects\obj_Crystal_1</object>
         <object>objects\obj_Crystal_base</object>
+      </objects>
+      <objects name="Towers">
+        <object>objects\obj_Tower_1</object>
       </objects>
     </objects>
     <objects name="Surface">
@@ -119,15 +137,23 @@
       <object>objects\obj_Sea</object>
     </objects>
     <objects name="GUI">
-      <object>objects\obj_Gui_Button</object>
+      <objects name="BuildItems">
+        <object>objects\obj_gui_build_item_tower_1</object>
+        <object>objects\obj_gui_build_item_crystal</object>
+      </objects>
+      <objects name="Widgets">
+        <object>objects\obj_gui_slider</object>
+      </objects>
+      <object>objects\obj_gui_build_panel</object>
     </objects>
   </objects>
   <rooms name="rooms">
     <room>rooms\room0</room>
   </rooms>
-  <constants number="2">
+  <constants number="3">
     <constant name="NaN">-99999999</constant>
-    <constant name="graphic_loom_enabled">true</constant>
+    <constant name="graphic_loom_enabled">false</constant>
+    <constant name="DRAW_GUI_BORDERS">false</constant>
   </constants>
   <help>
     <rtf>help.rtf</rtf>

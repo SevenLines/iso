@@ -44,6 +44,7 @@ level = 0;
 hover = 0;
 ix = 0;
 iy = 0;
+rnd = random(1000);
 
 image_speed = 0;
 
@@ -75,11 +76,12 @@ block_type = BlockType.Surface;
     with(new_object) {
         var obj = instance_copy(true);
         with (obj) {
-    //        depth = global.build_cursor_depth;
             level = global.build_cursor_level;
         }
     }
-    set_object_to_build_cursor(noone);
+    if !keyboard_check(vk_shift) {
+        set_object_to_build_cursor(noone);
+    }
 }
 </string>
           </argument>

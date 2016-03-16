@@ -71,7 +71,7 @@ with(new_object) {
         </arguments>
       </action>
     </event>
-    <event eventtype="6" enumb="53">
+    <event eventtype="6" enumb="54">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -88,13 +88,7 @@ with(new_object) {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/*with(new_object) {
-    var obj = instance_copy(true);
-    with (obj) {
-//        depth = global.build_cursor_depth;
-        level = global.build_cursor_level;
-    }
-}*/
+            <string>set_object_to_build_cursor(noone);
 </string>
           </argument>
         </arguments>

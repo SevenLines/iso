@@ -16,4 +16,4 @@ if ( k < 1) {
     view_yview[view] -= off_y/2;       
 }
 
-update_gui_position(0);
+gui_update_positions(0);

@@ -46,6 +46,13 @@ u_threshold_mask = shader_get_sampler_index(shd_Threshold, 'u_Mask');
 global.effects_surface = -1;
 global.current_step = 0;
 
+instance_create(0, 0, GroundController);
+instance_create(0, 0, BuildController);
+instance_create(0, 0, GraphicController);
+instance_create(0, 0, GuiController);
+
+gui_update_positions(0);
+
 
 </string>
           </argument>
@@ -85,7 +92,7 @@ if(mouse_check_button(mb_right))
     view_yview[0] += (ys-ye) * k;
     xs = xe;
     ys = ye;
-    update_gui_position(0);
+    gui_update_positions(0);
 }
 </string>
           </argument>
@@ -194,9 +201,9 @@ if (graphic_loom_enabled) {
         with(obj_Water) {
             draw_sprite_on_surface(global.zoom_k, c_white, 0);
         }
-        /*with(obj_Crystal_base) {
+        with(obj_Crystal_base) {
             draw_sprite_on_surface(global.zoom_k, c_white, 0);
-        }*/
+        }
     surface_reset_target();
       
     shader_set(shd_Threshold) 
@@ -284,7 +291,7 @@ if view_wport[0] != surface_get_width(application_surface)
 {
     surface_resize(application_surface, view_wport[0],view_hport[0]);
     game_controller_create_surfaces(true);
-    update_gui_position(0);
+    gui_update_positions(0);
 }
 </string>
           </argument>

@@ -31,10 +31,9 @@ global.build_cursor_level = 0;
 global.build_cursor_depth = 0;
 
 build_cursor = instance_create(0, 0, obj_BuildCursor);
-with(build_cursor) {
-    set_object_to_build_cursor(obj_Crystal_1);
-}
-global.build_cursor = build_cursor;
+global.build_cursor = build_cursor
+
+instance_create(0, 0, obj_gui_build_panel);
 </string>
           </argument>
         </arguments>

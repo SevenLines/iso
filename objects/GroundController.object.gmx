@@ -25,15 +25,15 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>w = 30;
-h = 30;
+            <string>w = 50;
+h = 50;
 
 global.sw = sprite_get_width(spr_base);
 global.sh = sprite_get_height(spr_base) - 13;
 global.water_surface = -1;
 
-land_size[0] = 25;
-land_size[1] = 25;
+land_size[0] = 40;
+land_size[1] = 40;
 
 global.map = generate_map(w, h, land_size);
 global.map_w = ds_grid_width(global.map);
@@ -42,6 +42,11 @@ global.map_buildings = ds_grid_create(w, h);
 
 global.hovered_block = noone;
 global.show_level = true;
+
+var view_pos = get_iso_position(w/2, h/2);
+view_xview[0] = view_pos[0] - view_wview[0] / 2;
+view_yview[0] = view_pos[1] - view_hview[0] / 2;
+
 
 
 

@@ -28,8 +28,9 @@
             <string>event_inherited();
 block_type = BlockType.Water;
 //image_index = SurfaceSpriteIndex.Water;
-image_speed = 3 / room_speed;
-image_alpha = 0.75;
+image_speed = 10 / room_speed;
+image_index = rnd % image_number;
+image_alpha = 0.85;
 
 part_sys = part_system_create();
 spark = part_type_create();
@@ -51,11 +52,11 @@ part_emitter_region(
 ) 
 
 emit_counter = 100;
-part_emitter_burst(
+/*part_emitter_burst(
         part_sys, 
         spark_emiter, 
         spark, 2
-    );
+    );*/
 //part_emitter_stream(part_sys, spark_emiter, spark, 1);
 </string>
           </argument>
@@ -80,14 +81,14 @@ part_emitter_burst(
           <argument>
             <kind>1</kind>
             <string>event_inherited();
-if global.current_step % emit_counter == 0 {
+/*if global.current_step % emit_counter == 0 {
     part_emitter_burst(
         part_sys, 
         spark_emiter, 
         spark, 2
     );
 }
-part_system_depth(part_sys, depth - 0.01);
+part_system_depth(part_sys, depth - 0.01);*/
 </string>
           </argument>
         </arguments>
@@ -126,7 +127,7 @@ draw_sprite_ext(
     1,
     0,
     c_white,
-    1
+    image_alpha
 );
 
 /*if surface_exists(global.effects_surface) {
