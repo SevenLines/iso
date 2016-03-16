@@ -24,3 +24,15 @@ if force || !surface_exists(surf_bloom) {
         surface_resize(surf_bloom, new_w, new_h);
     }
 }
+
+if force || !surface_exists(surf_second) {
+    surf_second = surface_create(
+        new_w,
+        new_h
+    );
+} else {
+    if surface_get_width(surf_second) != new_w ||
+        surface_get_height(surf_second) != new_h {
+        surface_resize(surf_second, new_w, new_h);
+    }
+}

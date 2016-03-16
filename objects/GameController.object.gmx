@@ -32,23 +32,14 @@ randomize();
 
 application_surface_draw_enable ( false );
 
-
 global.zoom_k = 1;
-surf_blur_pass_k = 1;
-surf_blur_pass = noone;
-surf_bloom = noone;
-
-
-u_scale = shader_get_uniform(shd_Blur, 'u_Scale');
-u_threshould = shader_get_uniform(shd_Threshold, 'u_Threshold');
-u_threshold_mask = shader_get_sampler_index(shd_Threshold, 'u_Mask');
 
 global.effects_surface = -1;
 global.current_step = 0;
 
 instance_create(0, 0, GroundController);
 instance_create(0, 0, BuildController);
-instance_create(0, 0, GraphicController);
+instance_create(0, 0, GraphicsController);
 instance_create(0, 0, GuiController);
 
 gui_update_positions(0);
@@ -140,8 +131,10 @@ if(mouse_check_button(mb_right))
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>global.zoom_k *= 1.5;
-zoom_room(1.5);
+            <string>if keyboard_check(vk_control) {
+    global.zoom_k *= 1.5;
+    zoom_room(1.5);
+}
 </string>
           </argument>
         </arguments>
@@ -164,8 +157,10 @@ zoom_room(1.5);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>global.zoom_k /= 1.5;
-zoom_room(1.0 / 1.5);
+            <string>if keyboard_check(vk_control) {
+    global.zoom_k /= 1.5;
+    zoom_room(1.0 / 1.5);
+}
 
 </string>
           </argument>
@@ -189,68 +184,7 @@ zoom_room(1.0 / 1.5);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_set_colour_write_enable(true, true, true, true);
-
-game_controller_create_surfaces(false);
-
-// bloom effect
-//shader_set(shd_Mask)
-if (graphic_loom_enabled) {
-    surface_set_target(surf_blur_pass);
-        draw_clear_alpha(c_black, 0);
-        with(obj_Water) {
-            draw_sprite_on_surface(global.zoom_k, c_white, 0);
-        }
-        with(obj_Crystal_base) {
-            draw_sprite_on_surface(global.zoom_k, c_white, 0);
-        }
-    surface_reset_target();
-      
-    shader_set(shd_Threshold) 
-        shader_set_uniform_f(u_threshould, 0.8);
-        texture_set_stage(u_threshold_mask, 
-            surface_get_texture(surf_blur_pass));
-            
-        surface_set_target(surf_bloom);
-        draw_surface_ext(
-            application_surface,
-            0, 0, 1 / surf_blur_pass_k, 1 / surf_blur_pass_k,
-            0, c_white, 1);
-        surface_reset_target();
-    shader_reset();
-    
-    shader_set(shd_Blur)
-        shader_set_uniform_f(u_scale, 0, 0.01);
-        surface_set_target(surf_blur_pass);
-            draw_surface(surf_bloom, 0, 0);
-        surface_reset_target();
-    shader_reset();
-    
-    shader_set(shd_Blur)
-        shader_set_uniform_f(u_scale, 0.01, 0);
-        surface_set_target(surf_bloom);
-            draw_surface(surf_blur_pass, 0, 0);
-        surface_reset_target();
-    shader_reset();
-}
-
-draw_surface_ext(
-    application_surface, 0, 0,
-    1,
-    1,
-    0,
-    c_white,
-    1  
-);
-
-if (graphic_loom_enabled) {
-    draw_set_blend_mode(bm_add);
-    draw_surface_ext(surf_bloom, 0, 0, 
-                    surf_blur_pass_k, surf_blur_pass_k, 
-                    0, c_white, 1);
-    draw_set_blend_mode(bm_normal);
-}
-
+            <string>
 
 </string>
           </argument>
@@ -274,26 +208,7 @@ if (graphic_loom_enabled) {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_set_colour_write_enable(true, true, true, false)
-
-if view_wport[0] != display_get_gui_width() {
-    view_wport[0] = display_get_gui_width();
-    view_wview[0] = view_wport[0] * global.zoom_k;
-}
-
-if view_hport[0] != display_get_gui_height() {
-    view_hport[0] = display_get_gui_height();
-    view_hview[0] = view_hport[0] * global.zoom_k;
-}
-
-if view_wport[0] != surface_get_width(application_surface) 
-    || view_hport[0] != surface_get_height(application_surface)
-{
-    surface_resize(application_surface, view_wport[0],view_hport[0]);
-    game_controller_create_surfaces(true);
-    gui_update_positions(0);
-}
-</string>
+            <string></string>
           </argument>
         </arguments>
       </action>

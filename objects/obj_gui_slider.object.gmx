@@ -30,11 +30,115 @@ left = 20;
 bottom = 20;
 real_xscale = 300 / sprite_get_width(sprite_index);
 real_yscale = 1;
+hover = false;
 
 value = 0; // текущее значение слайдера
 step = 0.05; // шаг, или 0, чтобы без шага
 modificator = 100; // модификатор используемый при выводе реального значения
+modificator_offset = 0;
 
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="6" enumb="61">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if (hover) {
+    if step == 0
+        inc = 0.05;
+        
+    value = clamp(value - inc, 0, 1);
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="6" enumb="60">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if (hover) {
+    if step == 0
+        inc = 0.05;
+        
+    value = clamp(value + inc, 0, 1);
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="6" enumb="11">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>hover = false;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="6" enumb="10">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>hover = true;
 </string>
           </argument>
         </arguments>
@@ -144,9 +248,9 @@ draw_set_font(fnt_ComicSans20);
 draw_set_colour(make_colour_rgb(64, 64, 32));
 draw_set_valign(fa_middle);
 draw_text(
-    real_x + sprite_get_width(sprite_index) * (real_xscale),
+    real_x + sprite_get_width(sprite_index) * (real_xscale) + 4,
     real_y +  sprite_get_height(sprite_index) / 2,
-    string(round(value * modificator))
+    string(round(value * modificator) + modificator_offset)
 );
 </string>
           </argument>

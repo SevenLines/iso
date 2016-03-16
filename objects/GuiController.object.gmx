@@ -25,10 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>instance_create(0, 0, obj_gui_slider);
-
-
-</string>
+            <string></string>
           </argument>
         </arguments>
       </action>
